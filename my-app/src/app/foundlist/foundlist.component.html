@@ -1,0 +1,34 @@
+<h2>Foundlist</h2>
+Order by:
+<select [(ngModel)]="sortParam">
+    <option value="name"> Name </option>
+    <option value="category"> Category </option>
+    <option value="color"> Color </option>
+  </select> <br /> <br />
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="sort"><input type="text" name="name" [(ngModel)]="filter.name" placeholder="name"></th>
+      <th class="sort"><input type="text" name="category" [(ngModel)]="filter.category" placeholder="category"></th>
+      <th class="sort"><input type="text" name="color" [(ngModel)]="filter.color" placeholder="color"></th>
+      <th class="sort">-</th>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <th class="up">Name</th>
+      <th class="up">Category</th>
+      <th class="up">Color</th>
+      <th class="up">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items | filterByStatus: FOUND_STATUS | itemfilter:filter | orderBy:sortParam">
+      <td class="text-left">{{item.name}}</td>
+      <td class="text-left">{{item.category}}</td>
+      <td class="text-left">{{item.color}}</td>
+      <td><button type="button" class="btn btn-info"><a [routerLink]="['/detail', item.id]"  class="col-1-4">Details</a></button></td>
+    </tr>
+  </tbody>
+</table>
+<br /><br />

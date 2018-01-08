@@ -1,0 +1,14 @@
+<br /><br />
+<h2>Detail of item: </h2>
+<section class="container" id="glowny" *ngIf="item">
+  <div class="one"><img src="{{item.image}}"></div>
+  <div class="two">
+    <b>Id number:</b> {{item.id}}<br />
+    <b>Name:</b> {{item.name}}<br />
+    <b>Category:</b> {{item.category}}<br />
+    <b>Date of added:</b> {{item.dateOfAdded}}<br />
+    <b>Status:</b> {{item.status}}<br />
+    <b>Weight:</b> {{item.weight}}<br /><br />
+    <button (click)="goBack()" type="button" class="btn-danger">Back</button>
+  </div>
+</section>

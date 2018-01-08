@@ -1,0 +1,66 @@
+<h2>Wishlist</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="up">Item's name</th>
+            <th class="up">Users (id)</th>
+            <th class="up">Add user/Close wishlist</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items | filterByStatus: FOUND_STATUS">
+            <td class="text-left">{{item.name}}</td>
+            <td class="text-left">
+                <p *ngFor="let profile of item.profiles">{{profile.login}} ({{profile.id}})</p>
+            </td>
+            <td class="text-center"><a (click)="onSelect(item); modalAdd.open()" [style.visibility]="(item.profiles.length > 2) ? 'hidden' : 'visible' "><button type="button" class="btn btn-success">Add</button></a>
+                <a *ngIf="validateDate(item.dateOfAdded)" (click)="onSelect(item); modal.open()"><button type="button" class="btn btn-danger">Close</button></a></td>
+        </tr>
+    </tbody>
+</table>
+<br /><br />
+
+<modal #modal [keyboard]="false" [backdrop]="'static'">
+    <modal-header [show-close]="false">
+        <h4 class="modal-title">Wishlist is closed.</h4>
+    </modal-header>
+    <modal-body>
+
+        <form (ngSubmit)="closeWishlist(selectedItem.id)" #closeWishlistForm="ngForm">
+            {{diagnostic}}
+            <div class="form-group">
+                <label for="usersLogin">Note of item</label>
+                <rating [(ngModel)]="message.starsCount" name="starsCout" required></rating>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!closeWishlistForm.form.valid">Submit</button><br /><br
+            />
+            <p style="background-color: #7FFF00;"><b>{{returnMsg}}</b></p>
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss(); !closeWishlistForm.form.reset();">Cancel</button>
+    </modal-footer>
+</modal>
+
+<modal #modalAdd [keyboard]="false" [backdrop]="'static'">
+    <modal-header [show-close]="false">
+        <h4 class="modal-title">Add profile to wishlist</h4>
+    </modal-header>
+    <modal-body>
+        <form (ngSubmit)="addProfile(selectedItem.id)" #addProfileForm="ngForm">
+            {{diagnostic}}
+            <div class="form-group">
+                <label for="usersLogin">User's login</label>
+                <input type="text" class="form-control" [(ngModel)]="message.usersLogin" name="usersLogin" placeholder="user's login" required>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!addProfileForm.form.valid">Submit</button><br /><br
+            />
+            <p style="background-color: #7FFF00;"><b>{{returnMsg}}</b></p>
+            <p style="background-color: #FF4500"><b>{{errorMsg}}</b></p>
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="!addProfileForm.form.reset(); modal.dismiss(); cleanMessage()">Cancel</button>
+    </modal-footer>
+</modal>

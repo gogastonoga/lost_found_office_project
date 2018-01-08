@@ -1,0 +1,32 @@
+.table {
+    border-radius: 5px;
+    margin: 0px auto;
+    float: none;
+    width: 50%;
+    border-color: black;
+    background-color: white;
+    font-family: Tahoma;
+    box-shadow: 3px 3px 5px #000000;
+}
+
+h2 {
+  color: #000000; 
+  font-family: Georgia, cursive; 
+  font-size: 20px; 
+  font-weight: normal; 
+  line-height: 20px;  
+  text-align: center; 
+  text-shadow: 1px 1px 2px #999999; }
+
+.up {
+  background-color: black;
+  color: white;
+}
+
+.sort{
+  background-color: #999999;
+}
+
+a {
+  color: black;
+}

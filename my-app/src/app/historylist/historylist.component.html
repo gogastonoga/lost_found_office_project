@@ -1,0 +1,25 @@
+<h2>History of received</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="up">Id</th>
+      <th class="up">Item's name</th>
+      <th class="up">Profile's login</th>
+      <th class="up">Date of received</th>
+      <th class="up">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let history of histories">
+      <td class="text-left">{{history.id}}</td>
+      <td class="text-left">{{history.itemId.name}}</td>
+      <td class="text-left">{{history.profileId.login}}</td>
+      <td class="text-left">{{history.receivedDate}}</td>
+      <td class="text-left">
+        <rating class="modal-input"  [(ngModel)]="history.note" [readonly]="true"></rating>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br /><br />

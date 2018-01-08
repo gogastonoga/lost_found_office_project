@@ -1,0 +1,37 @@
+ 
+  .button {
+    background-color: #33cccc;
+    border: none;
+    color: black;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-shadow: 1px 1px 2px black; 
+    transition-duration: 1s;
+  }
+  
+  .button:hover {
+    background-color: black;
+    color: #ccffff;
+    
+  }
+
+  h1 { 
+    color: #006666; 
+    font-family: Georgia, cursive; 
+    font-size: 35px; 
+    font-weight: normal; 
+    line-height: 48px; 
+    margin: 0 0 20px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #999999; }
+
+
+    nav a.active {
+      background-color: black;
+      border: none;
+      color: #33cccc;
+    }
